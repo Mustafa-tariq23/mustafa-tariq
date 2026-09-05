@@ -14,7 +14,7 @@ export function useVideoScrub() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas || typeof (canvas as any).getContext !== "function") return;
     const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
 

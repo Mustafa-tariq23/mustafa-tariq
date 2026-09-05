@@ -156,7 +156,11 @@ export default function Home() {
   // Track scroll position to show/hide side-rail past hero
   useEffect(() => {
     const handleScroll = () => {
-      setScrolledPastHero(window.scrollY > window.innerHeight * 0.35);
+      const past = window.scrollY > window.innerHeight * 0.35;
+      setScrolledPastHero(past);
+      if (!past) {
+        setMenuOpen(false);
+      }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
@@ -187,7 +191,7 @@ export default function Home() {
       <div className="signal-scan-line" aria-hidden="true" />
 
       {/* ── Mainframe Mouse-Scrub Hero Landing Section ────────── */}
-      <MainframeHero />
+      <MainframeHero sidebarOpen={scrolledPastHero || menuOpen} />
 
       {/* ── Portfolio Content (reveals as user scrolls down) ─── */}
       <div className="portfolio-content">
@@ -199,15 +203,27 @@ export default function Home() {
             </span>
             <span className="mark-word">MUSTAFA TARIQ</span>
           </a>
-          <button
-            className="mobile-menu-trigger"
-            type="button"
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-            aria-expanded={menuOpen}
-          >
-            {menuOpen ? <X size={19} /> : <Menu size={19} />}
-          </button>
+          <div className="flex items-center gap-3">
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScroll("#contact");
+              }}
+              className="text-[12px] text-white/90 hover:text-white underline underline-offset-2 font-medium cursor-pointer"
+            >
+              Get in touch
+            </a>
+            <button
+              className="mobile-menu-trigger"
+              type="button"
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? <X size={19} /> : <Menu size={19} />}
+            </button>
+          </div>
         </header>
 
         {/* Side Rail (active when scrolled past hero) */}
