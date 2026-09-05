@@ -100,9 +100,9 @@ export default function MainframeHero({ sidebarOpen = false }: MainframeHeroProp
           </span>
         </div>
 
-        {/* Desktop / Tablet Nav Links (center) - hides when sidebar opens */}
+        {/* Desktop / Tablet Nav Links (center) - 5 indexes: About, Toolkit, Experience, Projects, Education */}
         <nav
-          className={`hidden md:flex flex-row items-center text-[14px] md:text-[15px] lg:text-[17px] xl:text-[19px] text-black font-normal transition-all duration-300 ease-in-out ${
+          className={`hidden md:flex flex-row items-center text-[13px] md:text-[14px] lg:text-[16px] xl:text-[18px] text-black font-normal transition-all duration-300 ease-in-out ${
             sidebarOpen
               ? "opacity-0 -translate-y-4 pointer-events-none invisible"
               : "opacity-100 translate-y-0 pointer-events-auto visible"
@@ -151,6 +151,17 @@ export default function MainframeHero({ sidebarOpen = false }: MainframeHeroProp
             className="hover:opacity-60 transition-opacity duration-200 cursor-pointer"
           >
             Projects
+          </a>
+          <span className="cursor-default select-none">,&nbsp;</span>
+          <a
+            href="#education"
+            onClick={(e) => {
+              e.preventDefault();
+              handleScrollTo("#education");
+            }}
+            className="hover:opacity-60 transition-opacity duration-200 cursor-pointer"
+          >
+            Education
           </a>
         </nav>
 
@@ -218,20 +229,31 @@ export default function MainframeHero({ sidebarOpen = false }: MainframeHeroProp
 
       {/* ── Mobile Overlay (z-index: 9) ─────────────────────────────── */}
       <div
-        className={`fixed inset-0 bg-white/95 backdrop-blur-sm z-[9] flex flex-col justify-center items-start px-8 gap-8 transition-all duration-300 md:hidden ${mobileMenuOpen && !sidebarOpen
+        className={`fixed inset-0 bg-white/95 backdrop-blur-sm z-[9] flex flex-col justify-center items-start px-8 gap-6 transition-all duration-300 md:hidden ${
+          mobileMenuOpen && !sidebarOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
-          }`}
+        }`}
       >
+        <a
+          href="#profile"
+          onClick={(e) => {
+            e.preventDefault();
+            handleScrollTo("#profile");
+          }}
+          className="text-[28px] font-medium text-black hover:opacity-60 transition-opacity"
+        >
+          01 Profile
+        </a>
         <a
           href="#about"
           onClick={(e) => {
             e.preventDefault();
             handleScrollTo("#about");
           }}
-          className="text-[32px] font-medium text-black hover:opacity-60 transition-opacity"
+          className="text-[28px] font-medium text-black hover:opacity-60 transition-opacity"
         >
-          About
+          02 About
         </a>
         <a
           href="#capabilities"
@@ -239,9 +261,9 @@ export default function MainframeHero({ sidebarOpen = false }: MainframeHeroProp
             e.preventDefault();
             handleScrollTo("#capabilities");
           }}
-          className="text-[32px] font-medium text-black hover:opacity-60 transition-opacity"
+          className="text-[28px] font-medium text-black hover:opacity-60 transition-opacity"
         >
-          Toolkit
+          03 Toolkit
         </a>
         <a
           href="#experience"
@@ -249,9 +271,9 @@ export default function MainframeHero({ sidebarOpen = false }: MainframeHeroProp
             e.preventDefault();
             handleScrollTo("#experience");
           }}
-          className="text-[32px] font-medium text-black hover:opacity-60 transition-opacity"
+          className="text-[28px] font-medium text-black hover:opacity-60 transition-opacity"
         >
-          Experience
+          04 Experience
         </a>
         <a
           href="#work"
@@ -259,14 +281,24 @@ export default function MainframeHero({ sidebarOpen = false }: MainframeHeroProp
             e.preventDefault();
             handleScrollTo("#work");
           }}
-          className="text-[32px] font-medium text-black hover:opacity-60 transition-opacity"
+          className="text-[28px] font-medium text-black hover:opacity-60 transition-opacity"
         >
-          Projects
+          05 Projects
+        </a>
+        <a
+          href="#education"
+          onClick={(e) => {
+            e.preventDefault();
+            handleScrollTo("#education");
+          }}
+          className="text-[28px] font-medium text-black hover:opacity-60 transition-opacity"
+        >
+          06 Education
         </a>
         <a
           href={RESUME_URL}
           download="Mustafa-Tariq-Resume.pdf"
-          className="text-[32px] font-medium text-black hover:opacity-60 transition-opacity"
+          className="text-[24px] font-medium text-neutral-600 hover:text-black transition-colors"
         >
           Download CV ↗
         </a>
@@ -276,9 +308,9 @@ export default function MainframeHero({ sidebarOpen = false }: MainframeHeroProp
             e.preventDefault();
             handleScrollTo("#contact");
           }}
-          className="text-[32px] font-medium text-black underline underline-offset-2 hover:opacity-60 transition-opacity"
+          className="text-[28px] font-medium text-black underline underline-offset-2 hover:opacity-60 transition-opacity"
         >
-          Get in touch
+          07 Get in touch
         </a>
       </div>
 
@@ -296,7 +328,7 @@ export default function MainframeHero({ sidebarOpen = false }: MainframeHeroProp
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.06] border border-black/10 backdrop-blur-md mb-3 select-none">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-[11px] font-mono tracking-widest uppercase text-black/75 font-medium">
-                SOFTWARE ENGINEER || LAHORE, PK
+                01 // SOFTWARE ENGINEER || LAHORE, PK
               </span>
             </div>
             <p

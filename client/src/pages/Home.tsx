@@ -20,9 +20,11 @@ import {
   Menu,
   Minus,
   Phone,
+  Play,
   Server,
   Sparkles,
   Terminal,
+  Video,
   X,
   Zap,
 } from "lucide-react";
@@ -96,6 +98,9 @@ const projects = [
     detail:
       "Owned the full development lifecycle: requirements, data preparation, LoRA-style CodeT5 fine-tuning, evaluation suites, and deployment via a Next.js frontend with a FastAPI inference backend.",
     metric: "AI / Security",
+    // 🔗 Loom walkthrough link - replace with your Loom video URL:
+    loomUrl: "https://www.loom.com/share/placeholder-vulnerability-benchmark-demo",
+    demoUrl: "https://github.com/mustafatariq2304",
   },
   {
     index: "02",
@@ -107,6 +112,9 @@ const projects = [
     detail:
       "Designed REST API architecture and relational data models, then implemented end-to-end Stripe payments with reusable, documented frontend components.",
     metric: "SaaS / Payments",
+    // 🔗 Loom walkthrough link - replace with your Loom video URL:
+    loomUrl: "https://www.loom.com/share/placeholder-perks-saas-demo",
+    demoUrl: "https://github.com/mustafatariq2304",
   },
   {
     index: "03",
@@ -118,6 +126,9 @@ const projects = [
     detail:
       "Delivered the product experience, FastAPI services, PostgreSQL data layer, and Stripe integration for a real-world platform serving live users.",
     metric: "Commerce / Scale",
+    // 🔗 Loom walkthrough link - replace with your Loom video URL:
+    loomUrl: "https://www.loom.com/share/placeholder-daniels-believe-demo",
+    demoUrl: "https://github.com/mustafatariq2304",
   },
   {
     index: "04",
@@ -129,14 +140,28 @@ const projects = [
     detail:
       "Translated client requirements into technical specifications and delivered a connected internal operations system around people, vehicles, and payroll workflows.",
     metric: "Operations / Systems",
+    // 🔗 Loom walkthrough link - replace with your Loom video URL:
+    loomUrl: "https://www.loom.com/share/placeholder-hr-fleet-management-demo",
+    demoUrl: "https://github.com/mustafatariq2304",
   },
 ];
+
+// Helper to convert standard Loom share URL into responsive embed URL
+function getLoomEmbedUrl(url?: string) {
+  if (!url) return "";
+  if (url.includes("/share/")) {
+    return url.replace("/share/", "/embed/");
+  }
+  return url;
+}
 
 const navItems = [
   { label: "Profile",    href: "#profile" },
   { label: "About",      href: "#about" },
+  { label: "Toolkit",    href: "#capabilities" },
   { label: "Experience", href: "#experience" },
   { label: "Work",       href: "#work" },
+  { label: "Education",  href: "#education" },
   { label: "Contact",    href: "#contact" },
 ];
 
@@ -274,9 +299,9 @@ export default function Home() {
 
         {/* ─ Statement Band ────────────────────────────────────── */}
         <section className="statement-band page-section" aria-label="Positioning statement">
-          <div className="band-label">01 / Position</div>
+          <div className="band-label">The Through-Line</div>
           <div className="statement-copy">
-            <p className="section-kicker">The through-line</p>
+            <p className="section-kicker">Position / Overview</p>
             <h2>Not just shipping features.<br /><em>Making the whole system legible.</em></h2>
           </div>
           <div className="statement-note">
@@ -443,11 +468,17 @@ export default function Home() {
           </div>
           <div className="project-grid">
             {projects.map((project, index) => (
-              <motion.button
+              <motion.div
                 className={`project-card project-card-${index + 1}`}
                 key={project.name}
-                type="button"
+                role="button"
+                tabIndex={0}
                 onClick={() => setActiveProject(project)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    setActiveProject(project);
+                  }
+                }}
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
               >
@@ -462,9 +493,27 @@ export default function Home() {
                 </div>
                 <div className="project-card-bottom">
                   <span>{project.stack}</span>
-                  <ArrowUpRight size={16} />
+                  <div className="flex items-center gap-2.5">
+                    {project.loomUrl && (
+                      <a
+                        href={project.loomUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="card-loom-btn"
+                        title="Watch Loom walkthrough demo"
+                      >
+                        <span className="loom-dot" />
+                        <span>Loom Demo</span>
+                        <ArrowUpRight size={12} />
+                      </a>
+                    )}
+                    <span className="card-open-arrow">
+                      <ArrowUpRight size={16} />
+                    </span>
+                  </div>
                 </div>
-              </motion.button>
+              </motion.div>
             ))}
           </div>
         </section>
@@ -476,7 +525,7 @@ export default function Home() {
             <Minus size={16} />
           </div>
           <div className="education-main">
-            <p className="section-kicker">Education</p>
+            <p className="section-kicker">06 / Education</p>
             <h2>BS Software Engineering</h2>
             <p className="education-school">COMSATS University Islamabad · Lahore Campus</p>
           </div>
@@ -583,9 +632,43 @@ export default function Home() {
                 <span>Stack</span>
                 <strong>{activeProject.stack}</strong>
               </div>
+
+              {/* Loom Walkthrough Video Embed */}
+              {activeProject.loomUrl && (
+                <div className="modal-loom-section">
+                  <div className="modal-loom-header">
+                    <div className="flex items-center gap-2">
+                      <span className="loom-badge-pulse" />
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-orange-300">
+                        Loom Walkthrough Demo
+                      </span>
+                    </div>
+                    <a
+                      href={activeProject.loomUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="modal-loom-btn"
+                    >
+                      <Play size={11} className="fill-current" />
+                      <span>Open in Loom</span>
+                      <ArrowUpRight size={11} />
+                    </a>
+                  </div>
+                  <div className="modal-video-frame">
+                    <iframe
+                      src={getLoomEmbedUrl(activeProject.loomUrl)}
+                      title={`${activeProject.name} Loom Video Walkthrough`}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full border-0"
+                    />
+                  </div>
+                </div>
+              )}
+
               <div className="modal-note">
                 <span className="status-dot" />
-                Detailed case-study links available on request.
+                Demo links and detailed case-studies are updated per milestone.
               </div>
             </motion.article>
           </motion.div>
