@@ -42,7 +42,9 @@ import {
   Zap,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { Link, useLocation } from "wouter";
 import MainframeHero from "@/components/MainframeHero";
+import { projects, getLoomEmbedUrl, Project } from "@/data/projects";
 
 const resumeUrl = "/manus-storage/Mustafa_Tariq_0333a636.pdf";
 
@@ -123,74 +125,6 @@ const roles = [
   },
 ];
 
-const projects = [
-  {
-    index: "01",
-    name: "Vulnerability Benchmark System",
-    type: "Final Year Project",
-    stack: "Next.js · FastAPI · Python · Hugging Face",
-    summary:
-      "An AI-powered code security tool with a model evaluation layer designed to measure detection accuracy across vulnerability classes.",
-    detail:
-      "Owned the full development lifecycle: requirements, data preparation, LoRA-style CodeT5 fine-tuning, evaluation suites, and deployment via a Next.js frontend with a FastAPI inference backend.",
-    metric: "AI / Security",
-    loomEmbedUrl: "https://www.loom.com/embed/b1f0111a3eb145488ef7e8e1c328ba92",
-    loomUrl: "https://www.loom.com/share/b1f0111a3eb145488ef7e8e1c328ba92",
-    demoUrl: "https://github.com/mustafatariq2304",
-  },
-  {
-    index: "02",
-    name: "Perks",
-    type: "Lead Management SaaS",
-    stack: "Next.js · FastAPI · Stripe",
-    summary:
-      "A multi-feature SaaS platform grounded in reusable frontend components, relational models, and payment infrastructure.",
-    detail:
-      "Designed REST API architecture and relational data models, then implemented end-to-end Stripe payments with reusable, documented frontend components.",
-    metric: "SaaS / Payments",
-    loomEmbedUrl: "https://www.loom.com/embed/cc44df2391d4483398d57377aa17ac03",
-    loomUrl: "https://www.loom.com/share/cc44df2391d4483398d57377aa17ac03",
-    demoUrl: "https://github.com/mustafatariq2304",
-  },
-  {
-    index: "03",
-    name: "Daniel's Believe",
-    type: "eCommerce Platform · Germany",
-    stack: "Next.js · FastAPI · PostgreSQL · Stripe",
-    summary:
-      "A live full-stack commerce platform supporting 100+ product variations with a documented frontend and complete backend.",
-    detail:
-      "Delivered the product experience, FastAPI services, PostgreSQL data layer, and Stripe integration for a real-world platform serving live users.",
-    metric: "Commerce / Scale",
-    loomEmbedUrl: "https://www.loom.com/embed/1f11a62121e6454a991ed9eef0e9f082",
-    loomUrl: "https://www.loom.com/share/1f11a62121e6454a991ed9eef0e9f082",
-    demoUrl: "https://github.com/mustafatariq2304",
-  },
-  {
-    index: "04",
-    name: "HR & Fleet Management System",
-    type: "Internal Operations · KSA",
-    stack: "Next.js · FastAPI · Firebase",
-    summary:
-      "An integrated internal system spanning employee management, vehicle tracking, attendance, and salary operations.",
-    detail:
-      "Translated client requirements into technical specifications and delivered a connected internal operations system around people, vehicles, and payroll workflows.",
-    metric: "Operations / Systems",
-    loomEmbedUrl: "",
-    loomUrl: "",
-    demoUrl: "https://github.com/mustafatariq2304",
-  },
-];
-
-// Helper to convert standard Loom share URL into responsive embed URL
-function getLoomEmbedUrl(url?: string) {
-  if (!url) return "";
-  if (url.includes("/share/")) {
-    return url.replace("/share/", "/embed/");
-  }
-  return url;
-}
-
 const navItems = [
   { label: "Profile", href: "#profile" },
   { label: "About", href: "#about" },
@@ -207,8 +141,9 @@ function smoothScroll(id: string) {
 
 // ── Component ────────────────────────────────────────────────────
 export default function Home() {
+  const [, setLocation] = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeProject, setActiveProject] = useState<(typeof projects)[number] | null>(null);
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [expandedRole, setExpandedRole] = useState(0);
   const [activeSection, setActiveSection] = useState("profile");
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
@@ -509,10 +444,10 @@ export default function Home() {
                   key={project.name}
                   role="button"
                   tabIndex={0}
-                  onClick={() => setActiveProject(project)}
+                  onClick={() => setLocation(`/project/${project.id}`)}
                   onKeyDown={(e) => {
                     if (e.key === "Enter" || e.key === " ") {
-                      setActiveProject(project);
+                      setLocation(`/project/${project.id}`);
                     }
                   }}
                   whileHover={{ y: -4 }}
@@ -526,53 +461,33 @@ export default function Home() {
                     <p className="project-type">{project.type}</p>
                     <h3>{project.name}</h3>
                     <p>{project.summary}</p>
-
-                    {/* Direct In-Portfolio Video Embed */}
-                    {project.loomEmbedUrl && (
-                      <div
-                        className="project-card-video"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <div style={{ position: "relative", paddingBottom: "62.5%", height: 0 }}>
-                          <iframe
-                            src={project.loomEmbedUrl}
-                            title={`${project.name} Walkthrough`}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            style={{
-                              position: "absolute",
-                              top: 0,
-                              left: 0,
-                              width: "100%",
-                              height: "100%",
-                              border: 0,
-                            }}
-                          />
-                        </div>
-                      </div>
-                    )}
                   </div>
                   <div className="project-card-bottom">
                     <span>{project.stack}</span>
-                    <div className="flex items-center gap-2.5">
-                      {project.loomUrl && (
-                        <a
-                          href={project.loomUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="card-loom-btn"
-                          title="Watch Loom walkthrough demo"
+                    <div className="flex items-center gap-2">
+                      {(project.loomEmbedUrl || project.loomUrl) && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveProject(project);
+                          }}
+                          className="card-video-btn"
+                          title="Watch Loom video walkthrough in modal"
                         >
-                          <span className="loom-dot" />
-                          <span>Loom Demo</span>
-                          <ArrowUpRight size={12} />
-                        </a>
+                          <Play size={10} className="fill-current" />
+                          <span>Watch Demo</span>
+                        </button>
                       )}
-                      <span className="card-open-arrow">
-                        <ArrowUpRight size={16} />
-                      </span>
+                      <Link
+                        href={`/project/${project.id}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="card-details-btn"
+                        title="View full project case study"
+                      >
+                        <span>Details</span>
+                        <ArrowUpRight size={12} />
+                      </Link>
                     </div>
                   </div>
                 </motion.div>
@@ -730,9 +645,19 @@ export default function Home() {
                 </div>
               )}
 
-              <div className="modal-note">
-                <span className="status-dot" />
-                Demo links and detailed case-studies are updated per milestone.
+              <div className="modal-footer-actions">
+                <Link
+                  href={`/project/${activeProject.id}`}
+                  className="modal-details-link"
+                  onClick={() => setActiveProject(null)}
+                >
+                  <span>Read Full Case Study</span>
+                  <ArrowUpRight size={13} />
+                </Link>
+                <div className="modal-note !m-0 !p-0 !border-0">
+                  <span className="status-dot" />
+                  Verified Engineering Project
+                </div>
               </div>
             </motion.article>
           </motion.div>
