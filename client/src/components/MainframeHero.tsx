@@ -86,86 +86,54 @@ export default function MainframeHero({ sidebarOpen = false }: MainframeHeroProp
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="text-[19px] sm:text-[22px] lg:text-[26px] tracking-tight text-black font-normal cursor-pointer"
-            style={{ fontFamily: "var(--font-heading)" }}
+            className="text-[19px] sm:text-[22px] lg:text-[26px] tracking-tight font-normal cursor-pointer transition-opacity hover:opacity-80"
+            style={{ fontFamily: "var(--font-heading)", color: "#f0ede5" }}
           >
             Mustafa Tariq®
           </a>
           <span
-            className="text-[22px] sm:text-[26px] lg:text-[30px] text-black select-none leading-none cursor-default"
-            style={{ letterSpacing: "-0.02em" }}
+            className="text-[20px] sm:text-[24px] lg:text-[28px] select-none leading-none cursor-default"
+            style={{ letterSpacing: "-0.02em", color: "#ffb16b" }}
             aria-hidden="true"
           >
             ✳︎
           </span>
         </div>
 
-        {/* Desktop / Tablet Nav Links (center) - 5 indexes: About, Toolkit, Experience, Projects, Education */}
+        {/* Desktop / Tablet Nav Links (center) - Luxury Frosted Floating Capsule */}
         <nav
-          className={`hidden md:flex flex-row items-center text-[13px] md:text-[14px] lg:text-[16px] xl:text-[18px] text-black font-normal transition-all duration-300 ease-in-out ${
+          className={`hidden md:flex flex-row items-center transition-all duration-300 ease-in-out ${
             sidebarOpen
               ? "opacity-0 -translate-y-4 pointer-events-none invisible"
               : "opacity-100 translate-y-0 pointer-events-auto visible"
           }`}
           aria-label="Hero navigation"
         >
-          <a
-            href="#about"
-            onClick={(e) => {
-              e.preventDefault();
-              handleScrollTo("#about");
-            }}
-            className="hover:opacity-60 transition-opacity duration-200 cursor-pointer"
-          >
-            About
-          </a>
-          <span className="cursor-default select-none">,&nbsp;</span>
-          <a
-            href="#capabilities"
-            onClick={(e) => {
-              e.preventDefault();
-              handleScrollTo("#capabilities");
-            }}
-            className="hover:opacity-60 transition-opacity duration-200 cursor-pointer"
-          >
-            Toolkit
-          </a>
-          <span className="cursor-default select-none">,&nbsp;</span>
-          <a
-            href="#experience"
-            onClick={(e) => {
-              e.preventDefault();
-              handleScrollTo("#experience");
-            }}
-            className="hover:opacity-60 transition-opacity duration-200 cursor-pointer"
-          >
-            Experience
-          </a>
-          <span className="cursor-default select-none">,&nbsp;</span>
-          <a
-            href="#work"
-            onClick={(e) => {
-              e.preventDefault();
-              handleScrollTo("#work");
-            }}
-            className="hover:opacity-60 transition-opacity duration-200 cursor-pointer"
-          >
-            Projects
-          </a>
-          <span className="cursor-default select-none">,&nbsp;</span>
-          <a
-            href="#education"
-            onClick={(e) => {
-              e.preventDefault();
-              handleScrollTo("#education");
-            }}
-            className="hover:opacity-60 transition-opacity duration-200 cursor-pointer"
-          >
-            Education
-          </a>
+          <div className="hero-nav-capsule">
+            {[
+              { num: "02", label: "About", href: "#about" },
+              { num: "03", label: "Toolkit", href: "#capabilities" },
+              { num: "04", label: "Experience", href: "#experience" },
+              { num: "05", label: "Projects", href: "#work" },
+              { num: "06", label: "Education", href: "#education" },
+            ].map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollTo(item.href);
+                }}
+                className="hero-nav-item"
+              >
+                <span className="hero-nav-num">{item.num}</span>
+                <span className="hero-nav-label">{item.label}</span>
+              </a>
+            ))}
+          </div>
         </nav>
 
-        {/* Desktop / Tablet CTA (right) - ALWAYS VISIBLE, transforms into sleek frosted pill when scrolled */}
+        {/* Desktop / Tablet CTA (right) - Sleek frosted pill matching center navigation */}
         <div className="hidden md:flex items-center gap-4 lg:gap-6 shrink-0 pointer-events-auto">
           <a
             href="#contact"
@@ -176,10 +144,11 @@ export default function MainframeHero({ sidebarOpen = false }: MainframeHeroProp
             className={`transition-all duration-300 cursor-pointer ${
               sidebarOpen
                 ? "inline-flex items-center text-[13px] md:text-[14px] lg:text-[15px] font-medium text-[#f0ede5] bg-[#07090b]/85 hover:bg-[#07090b] border border-white/20 backdrop-blur-md px-4 py-1.5 rounded-full shadow-lg hover:border-white/40 hover:scale-105"
-                : "text-[14px] md:text-[15px] lg:text-[17px] xl:text-[19px] text-black underline underline-offset-2 hover:opacity-60 font-normal"
+                : "hero-cta-btn"
             }`}
           >
-            Get in touch
+            <span>Get in touch</span>
+            <span className="hero-cta-arrow">↗</span>
           </a>
         </div>
 
@@ -197,7 +166,8 @@ export default function MainframeHero({ sidebarOpen = false }: MainframeHeroProp
               e.preventDefault();
               handleScrollTo("#contact");
             }}
-            className="text-[13px] sm:text-[14px] text-black underline underline-offset-2 hover:opacity-60 font-medium cursor-pointer"
+            className="text-[13px] sm:text-[14px] underline underline-offset-2 hover:opacity-75 font-medium cursor-pointer"
+            style={{ color: "#f0ede5" }}
           >
             Get in touch
           </a>
@@ -209,18 +179,18 @@ export default function MainframeHero({ sidebarOpen = false }: MainframeHeroProp
             className="flex flex-col justify-center items-center gap-[5px] w-8 h-8 cursor-pointer z-20 focus:outline-none"
           >
             <span
-              className={`w-6 h-[2px] bg-black transition-all duration-300 origin-center ${
-                mobileMenuOpen ? "rotate-45 translate-y-[7px]" : ""
+              className={`w-6 h-[2px] transition-all duration-300 origin-center ${
+                mobileMenuOpen ? "rotate-45 translate-y-[7px] bg-black" : "bg-[#f0ede5]"
               }`}
             />
             <span
-              className={`w-6 h-[2px] bg-black transition-all duration-300 ${
-                mobileMenuOpen ? "opacity-0" : "opacity-100"
+              className={`w-6 h-[2px] transition-all duration-300 ${
+                mobileMenuOpen ? "opacity-0 bg-black" : "opacity-100 bg-[#f0ede5]"
               }`}
             />
             <span
-              className={`w-6 h-[2px] bg-black transition-all duration-300 origin-center ${
-                mobileMenuOpen ? "-rotate-45 -translate-y-[7px]" : ""
+              className={`w-6 h-[2px] transition-all duration-300 origin-center ${
+                mobileMenuOpen ? "-rotate-45 -translate-y-[7px] bg-black" : "bg-[#f0ede5]"
               }`}
             />
           </button>

@@ -3,15 +3,23 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowDownRight,
   ArrowUpRight,
+  Bot,
+  Boxes,
+  Braces,
+  Brain,
   Check,
   ChevronDown,
   ChevronUp,
   CircleDot,
   Code2,
   Container,
+  Cpu,
   Database,
   Download,
   ExternalLink,
+  FileCode2,
+  Flame,
+  GitBranch,
   Github,
   Layers,
   Linkedin,
@@ -19,12 +27,17 @@ import {
   MapPin,
   Menu,
   Minus,
+  Network,
   Phone,
   Play,
+  SearchCode,
   Server,
+  Sliders,
   Sparkles,
+  Table,
   Terminal,
   Video,
+  Workflow,
   X,
   Zap,
 } from "lucide-react";
@@ -35,26 +48,49 @@ const resumeUrl = "/manus-storage/Mustafa_Tariq_0333a636.pdf";
 
 // ── Data ─────────────────────────────────────────────────────────
 const capabilities = [
-  { label: "Frontend",   detail: "React · Next.js · TypeScript" },
-  { label: "Backend",    detail: "FastAPI · Node.js · REST" },
-  { label: "Data",       detail: "PostgreSQL · MySQL · MongoDB" },
-  { label: "AI systems", detail: "OpenAI · Claude · Transformers" },
-  { label: "Delivery",   detail: "Docker · AWS EC2 · Nginx" },
+  { label: "Frontend", detail: "React · Next.js · TypeScript · JavaScript · Tailwind" },
+  { label: "Backend", detail: "FastAPI · Node.js · Python · REST APIs · JWT Auth" },
+  { label: "Data", detail: "PostgreSQL · MySQL · SQL · MongoDB · Firebase" },
+  { label: "AI systems", detail: "OpenAI · Claude · RAG & CAG · Fine-Tuning · Hugging Face" },
+  { label: "Delivery", detail: "Docker · AWS EC2 · Nginx · CI/CD · Git & GitHub" },
 ];
 
 const stackItems = [
-  { name: "React",       icon: <Code2 size={15} /> },
-  { name: "Next.js",     icon: <Layers size={15} /> },
-  { name: "TypeScript",  icon: <Terminal size={15} /> },
-  { name: "FastAPI",     icon: <Zap size={15} /> },
-  { name: "Node.js",     icon: <Server size={15} /> },
-  { name: "PostgreSQL",  icon: <Database size={15} /> },
-  { name: "MongoDB",     icon: <Database size={15} /> },
-  { name: "Docker",      icon: <Container size={15} /> },
-  { name: "AWS EC2",     icon: <Server size={15} /> },
-  { name: "Nginx",       icon: <Server size={15} /> },
-  { name: "OpenAI",      icon: <Sparkles size={15} /> },
-  { name: "Claude",      icon: <Sparkles size={15} /> },
+  // ── Core Languages & Frameworks ──────────
+  { name: "React", icon: <Code2 size={15} /> },
+  { name: "Next.js", icon: <Layers size={15} /> },
+  { name: "TypeScript", icon: <Terminal size={15} /> },
+  { name: "JavaScript", icon: <FileCode2 size={15} /> },
+  { name: "Python", icon: <Terminal size={15} /> },
+  { name: "FastAPI", icon: <Zap size={15} /> },
+  { name: "Node.js", icon: <Server size={15} /> },
+  { name: "REST APIs", icon: <Code2 size={15} /> },
+
+  // ── AI / ML & LLM Engineering ────────────
+  { name: "OpenAI", icon: <Sparkles size={15} /> },
+  { name: "Claude", icon: <Sparkles size={15} /> },
+  { name: "RAG & CAG", icon: <Network size={15} /> },
+  { name: "Fine-Tuning", icon: <Sliders size={15} /> },
+  { name: "ML Training", icon: <Cpu size={15} /> },
+  { name: "Data Science", icon: <Brain size={15} /> },
+  { name: "Hugging Face", icon: <Boxes size={15} /> },
+  { name: "Prompt Eng", icon: <SearchCode size={15} /> },
+  { name: "Cursor", icon: <Bot size={15} /> },
+  // { name: "Copilot",       icon: <Bot size={15} /> },
+
+  // ── Databases & Cloud Storage ────────────
+  { name: "PostgreSQL", icon: <Database size={15} /> },
+  { name: "MySQL", icon: <Table size={15} /> },
+  { name: "SQL", icon: <Braces size={15} /> },
+  { name: "MongoDB", icon: <Database size={15} /> },
+  { name: "Firebase", icon: <Flame size={15} /> },
+
+  // ── DevOps, Tooling & Delivery ───────────
+  { name: "Docker", icon: <Container size={15} /> },
+  { name: "AWS EC2", icon: <Server size={15} /> },
+  { name: "Nginx", icon: <Server size={15} /> },
+  { name: "Git & GitHub", icon: <GitBranch size={15} /> },
+  { name: "CI/CD", icon: <Workflow size={15} /> },
 ];
 
 const roles = [
@@ -98,8 +134,8 @@ const projects = [
     detail:
       "Owned the full development lifecycle: requirements, data preparation, LoRA-style CodeT5 fine-tuning, evaluation suites, and deployment via a Next.js frontend with a FastAPI inference backend.",
     metric: "AI / Security",
-    // 🔗 Loom walkthrough link - replace with your Loom video URL:
-    loomUrl: "https://www.loom.com/share/placeholder-vulnerability-benchmark-demo",
+    loomEmbedUrl: "https://www.loom.com/embed/b1f0111a3eb145488ef7e8e1c328ba92",
+    loomUrl: "https://www.loom.com/share/b1f0111a3eb145488ef7e8e1c328ba92",
     demoUrl: "https://github.com/mustafatariq2304",
   },
   {
@@ -112,8 +148,8 @@ const projects = [
     detail:
       "Designed REST API architecture and relational data models, then implemented end-to-end Stripe payments with reusable, documented frontend components.",
     metric: "SaaS / Payments",
-    // 🔗 Loom walkthrough link - replace with your Loom video URL:
-    loomUrl: "https://www.loom.com/share/placeholder-perks-saas-demo",
+    loomEmbedUrl: "https://www.loom.com/embed/cc44df2391d4483398d57377aa17ac03",
+    loomUrl: "https://www.loom.com/share/cc44df2391d4483398d57377aa17ac03",
     demoUrl: "https://github.com/mustafatariq2304",
   },
   {
@@ -126,8 +162,8 @@ const projects = [
     detail:
       "Delivered the product experience, FastAPI services, PostgreSQL data layer, and Stripe integration for a real-world platform serving live users.",
     metric: "Commerce / Scale",
-    // 🔗 Loom walkthrough link - replace with your Loom video URL:
-    loomUrl: "https://www.loom.com/share/placeholder-daniels-believe-demo",
+    loomEmbedUrl: "https://www.loom.com/embed/1f11a62121e6454a991ed9eef0e9f082",
+    loomUrl: "https://www.loom.com/share/1f11a62121e6454a991ed9eef0e9f082",
     demoUrl: "https://github.com/mustafatariq2304",
   },
   {
@@ -140,8 +176,8 @@ const projects = [
     detail:
       "Translated client requirements into technical specifications and delivered a connected internal operations system around people, vehicles, and payroll workflows.",
     metric: "Operations / Systems",
-    // 🔗 Loom walkthrough link - replace with your Loom video URL:
-    loomUrl: "https://www.loom.com/share/placeholder-hr-fleet-management-demo",
+    loomEmbedUrl: "",
+    loomUrl: "",
     demoUrl: "https://github.com/mustafatariq2304",
   },
 ];
@@ -156,13 +192,13 @@ function getLoomEmbedUrl(url?: string) {
 }
 
 const navItems = [
-  { label: "Profile",    href: "#profile" },
-  { label: "About",      href: "#about" },
-  { label: "Toolkit",    href: "#capabilities" },
+  { label: "Profile", href: "#profile" },
+  { label: "About", href: "#about" },
+  { label: "Toolkit", href: "#capabilities" },
   { label: "Experience", href: "#experience" },
-  { label: "Work",       href: "#work" },
-  { label: "Education",  href: "#education" },
-  { label: "Contact",    href: "#contact" },
+  { label: "Work", href: "#work" },
+  { label: "Education", href: "#education" },
+  { label: "Contact", href: "#contact" },
 ];
 
 function smoothScroll(id: string) {
@@ -171,9 +207,9 @@ function smoothScroll(id: string) {
 
 // ── Component ────────────────────────────────────────────────────
 export default function Home() {
-  const [menuOpen, setMenuOpen]           = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [activeProject, setActiveProject] = useState<(typeof projects)[number] | null>(null);
-  const [expandedRole, setExpandedRole]   = useState(0);
+  const [expandedRole, setExpandedRole] = useState(0);
   const [activeSection, setActiveSection] = useState("profile");
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
   const year = useMemo(() => new Date().getFullYear(), []);
@@ -297,300 +333,326 @@ export default function Home() {
         {/* ── Main Column ────────────────────────────────────────── */}
         <main className="main-column">
 
-        {/* ─ Statement Band ────────────────────────────────────── */}
-        <section className="statement-band page-section" aria-label="Positioning statement">
-          <div className="band-label">The Through-Line</div>
-          <div className="statement-copy">
-            <p className="section-kicker">Position / Overview</p>
-            <h2>Not just shipping features.<br /><em>Making the whole system legible.</em></h2>
-          </div>
-          <div className="statement-note">
-            From a relational schema to the last button state, the details should agree.
-          </div>
-        </section>
-
-        {/* ─ About ─────────────────────────────────────────────── */}
-        <section className="about-section page-section" id="about">
-          <div className="about-left">
-            <p className="section-kicker">02 / About</p>
-            <h2 style={{ marginBottom: "24px", fontSize: "clamp(2.2rem, 3.5vw, 3.8rem)", fontWeight: 600, letterSpacing: "-.07em", lineHeight: ".93" }}>
-              Fresh thinking.<br />Production instincts.
-            </h2>
-            <p className="about-bio">
-              I'm Mustafa Tariq — a final-year Software Engineering student at COMSATS University Islamabad
-              completing a BS while already holding two years of professional experience shipping production
-              systems for international clients.
-            </p>
-            <p className="about-bio" style={{ marginBottom: 0 }}>
-              I work across the full stack: designing relational schemas, building FastAPI services, crafting
-              React frontends, and deploying on AWS. I'm drawn to problems with real users, real constraints,
-              and stakes worth caring about.
-            </p>
-          </div>
-          <div className="about-right">
-            <div className="about-stats">
-              {[
-                { value: "2+", label: "Years experience" },
-                { value: "4+", label: "Live products shipped" },
-                { value: "3+", label: "Companies contributed to" },
-                { value: "10+", label: "Components built" },
-              ].map((stat) => (
-                <div className="about-stat" key={stat.label}>
-                  <span className="stat-value"><em>{stat.value}</em></span>
-                  <span className="stat-label">{stat.label}</span>
-                </div>
-              ))}
+          {/* ─ Statement Band ────────────────────────────────────── */}
+          <section className="statement-band page-section" aria-label="Positioning statement">
+            <div className="band-label">The Through-Line</div>
+            <div className="statement-copy">
+              <p className="section-kicker">Position / Overview</p>
+              <h2>Not just shipping features.<br /><em>Making the whole system legible.</em></h2>
             </div>
-          </div>
-        </section>
-
-        {/* ─ Capability / Toolkit ──────────────────────────────── */}
-        <section className="capability-section page-section" id="capabilities">
-          <div className="section-heading-row">
-            <div>
-              <p className="section-kicker">03 / Toolkit</p>
-              <h2>Range, with a point of view.</h2>
+            <div className="statement-note">
+              From a relational schema to the last button state, the details should agree.
             </div>
-            <p className="section-aside">
-              A practical stack shaped by shipping production systems, not collecting badges.
-            </p>
-          </div>
-          <div className="capability-list">
-            {capabilities.map((cap, index) => (
-              <motion.div
-                className="capability-row"
-                key={cap.label}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.6 }}
-                transition={{ duration: 0.4, delay: index * 0.06 }}
-              >
-                <span className="row-index">0{index + 1}</span>
-                <span className="capability-label">{cap.label}</span>
-                <span className="capability-detail">{cap.detail}</span>
-                <ArrowUpRight className="row-arrow" size={15} />
-              </motion.div>
-            ))}
-          </div>
+          </section>
 
-          {/* Stack icon grid */}
-          <div className="stack-section" style={{ paddingTop: "60px" }}>
-            <p className="section-kicker" style={{ marginBottom: "4px" }}>Technologies</p>
-            <div className="stack-grid">
-              {stackItems.map((item, index) => (
+          {/* ─ About ─────────────────────────────────────────────── */}
+          <section className="about-section page-section" id="about">
+            <div className="about-left">
+              <p className="section-kicker">02 / About</p>
+              <h2 style={{ marginBottom: "24px", fontSize: "clamp(2.2rem, 3.5vw, 3.8rem)", fontWeight: 600, letterSpacing: "-.07em", lineHeight: ".93" }}>
+                Fresh thinking.<br />Production instincts.
+              </h2>
+              <p className="about-bio">
+                I'm Mustafa Tariq — a final-year Software Engineering student at COMSATS University Islamabad
+                completing a BS while already holding two years of professional experience shipping production
+                systems for international clients.
+              </p>
+              <p className="about-bio" style={{ marginBottom: 0 }}>
+                I work across the full stack: designing relational schemas, building FastAPI services, crafting
+                React frontends, and deploying on AWS. I'm drawn to problems with real users, real constraints,
+                and stakes worth caring about.
+              </p>
+            </div>
+            <div className="about-right">
+              <div className="about-stats">
+                {[
+                  { value: "2+", label: "Years experience" },
+                  { value: "4+", label: "Live products shipped" },
+                  { value: "3+", label: "Companies contributed to" },
+                  { value: "10+", label: "Components built" },
+                ].map((stat) => (
+                  <div className="about-stat" key={stat.label}>
+                    <span className="stat-value"><em>{stat.value}</em></span>
+                    <span className="stat-label">{stat.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ─ Capability / Toolkit ──────────────────────────────── */}
+          <section className="capability-section page-section" id="capabilities">
+            <div className="section-heading-row">
+              <div>
+                <p className="section-kicker">03 / Toolkit</p>
+                <h2>Range, with a point of view.</h2>
+              </div>
+              <p className="section-aside">
+                A practical stack shaped by shipping production systems, not collecting badges.
+              </p>
+            </div>
+            <div className="capability-list">
+              {capabilities.map((cap, index) => (
                 <motion.div
-                  className="stack-item"
-                  key={item.name}
-                  initial={{ opacity: 0, y: 8 }}
+                  className="capability-row"
+                  key={cap.label}
+                  initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 0.3, delay: index * 0.04 }}
+                  viewport={{ once: true, amount: 0.6 }}
+                  transition={{ duration: 0.4, delay: index * 0.06 }}
                 >
-                  <span className="stack-icon">{item.icon}</span>
-                  <span className="stack-item-name">{item.name}</span>
+                  <span className="row-index">0{index + 1}</span>
+                  <span className="capability-label">{cap.label}</span>
+                  <span className="capability-detail">{cap.detail}</span>
+                  <ArrowUpRight className="row-arrow" size={15} />
                 </motion.div>
               ))}
             </div>
-          </div>
-        </section>
 
-        {/* ─ Experience ────────────────────────────────────────── */}
-        <section className="experience-section page-section" id="experience">
-          <div className="section-heading-row">
-            <div>
-              <p className="section-kicker">04 / Experience</p>
-              <h2>Closer to the metal.</h2>
-            </div>
-            <p className="section-aside">
-              Three chapters of getting sharper at the boundary between product intent and running software.
-            </p>
-          </div>
-          <div className="experience-list">
-            {roles.map((role, index) => {
-              const isOpen = expandedRole === index;
-              return (
-                <div
-                  className={`experience-item ${isOpen ? "is-open" : ""}`}
-                  key={role.company + role.year}
-                >
-                  <button
-                    className="experience-trigger"
-                    type="button"
-                    onClick={() => setExpandedRole(isOpen ? -1 : index)}
-                    aria-expanded={isOpen}
+            {/* Stack icon grid */}
+            <div className="stack-section" style={{ paddingTop: "60px" }}>
+              <p className="section-kicker" style={{ marginBottom: "4px" }}>Technologies</p>
+              <div className="stack-grid">
+                {stackItems.map((item, index) => (
+                  <motion.div
+                    className="stack-item"
+                    key={item.name}
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.4 }}
+                    transition={{ duration: 0.3, delay: index * 0.04 }}
                   >
-                    <span className="role-year">{role.year}</span>
-                    <span className="role-title">
-                      <strong>{role.title}</strong>
-                      <small>{role.company} / {role.place}</small>
-                    </span>
-                    <span className="role-toggle">
-                      {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-                    </span>
-                  </button>
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        className="experience-detail"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.24, ease: [0.23, 1, 0.32, 1] }}
-                      >
-                        <p>{role.description}</p>
-                        <div className="role-notes">
-                          {role.notes.map((note) => (
-                            <span key={note}>
-                              <Check size={13} />
-                              {note}
-                            </span>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* ─ Work ──────────────────────────────────────────────── */}
-        <section className="work-section page-section" id="work">
-          <div className="section-heading-row work-heading">
-            <div>
-              <p className="section-kicker">05 / Selected work</p>
-              <h2>Built for the messy middle.</h2>
+                    <span className="stack-icon">{item.icon}</span>
+                    <span className="stack-item-name">{item.name}</span>
+                  </motion.div>
+                ))}
+              </div>
             </div>
-            <p className="section-aside">
-              Products with enough moving parts to reward clear thinking.
-            </p>
-          </div>
-          <div className="project-grid">
-            {projects.map((project, index) => (
-              <motion.div
-                className={`project-card project-card-${index + 1}`}
-                key={project.name}
-                role="button"
-                tabIndex={0}
-                onClick={() => setActiveProject(project)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    setActiveProject(project);
-                  }
-                }}
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
-              >
-                <div className="project-card-top">
-                  <span>{project.index}</span>
-                  <span>{project.metric}</span>
-                </div>
-                <div className="project-card-body">
-                  <p className="project-type">{project.type}</p>
-                  <h3>{project.name}</h3>
-                  <p>{project.summary}</p>
-                </div>
-                <div className="project-card-bottom">
-                  <span>{project.stack}</span>
-                  <div className="flex items-center gap-2.5">
-                    {project.loomUrl && (
-                      <a
-                        href={project.loomUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="card-loom-btn"
-                        title="Watch Loom walkthrough demo"
-                      >
-                        <span className="loom-dot" />
-                        <span>Loom Demo</span>
-                        <ArrowUpRight size={12} />
-                      </a>
-                    )}
-                    <span className="card-open-arrow">
-                      <ArrowUpRight size={16} />
-                    </span>
+          </section>
+
+          {/* ─ Experience ────────────────────────────────────────── */}
+          <section className="experience-section page-section" id="experience">
+            <div className="section-heading-row">
+              <div>
+                <p className="section-kicker">04 / Experience</p>
+                <h2>Closer to the metal.</h2>
+              </div>
+              <p className="section-aside">
+                Three chapters of getting sharper at the boundary between product intent and running software.
+              </p>
+            </div>
+            <div className="experience-list">
+              {roles.map((role, index) => {
+                const isOpen = expandedRole === index;
+                return (
+                  <div
+                    className={`experience-item ${isOpen ? "is-open" : ""}`}
+                    key={role.company + role.year}
+                  >
+                    <button
+                      className="experience-trigger"
+                      type="button"
+                      onClick={() => setExpandedRole(isOpen ? -1 : index)}
+                      aria-expanded={isOpen}
+                    >
+                      <span className="role-year">{role.year}</span>
+                      <span className="role-title">
+                        <strong>{role.title}</strong>
+                        <small>{role.company} / {role.place}</small>
+                      </span>
+                      <span className="role-toggle">
+                        {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                      </span>
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          className="experience-detail"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.24, ease: [0.23, 1, 0.32, 1] }}
+                        >
+                          <p>{role.description}</p>
+                          <div className="role-notes">
+                            {role.notes.map((note) => (
+                              <span key={note}>
+                                <Check size={13} />
+                                {note}
+                              </span>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+                );
+              })}
+            </div>
+          </section>
 
-        {/* ─ Education ─────────────────────────────────────────── */}
-        <section className="education-section page-section" id="education">
-          <div className="education-index">
-            <span>06</span>
-            <Minus size={16} />
-          </div>
-          <div className="education-main">
-            <p className="section-kicker">06 / Education</p>
-            <h2>BS Software Engineering</h2>
-            <p className="education-school">COMSATS University Islamabad · Lahore Campus</p>
-          </div>
-          <div className="education-meta">
-            <span>2022—26</span>
-            <span>OOP · DSA · Databases<br />Architecture · AI · ML</span>
-          </div>
-        </section>
+          {/* ─ Work ──────────────────────────────────────────────── */}
+          <section className="work-section page-section" id="work">
+            <div className="section-heading-row work-heading">
+              <div>
+                <p className="section-kicker">05 / Selected work</p>
+                <h2>Built for the messy middle.</h2>
+              </div>
+              <p className="section-aside">
+                Products with enough moving parts to reward clear thinking.
+              </p>
+            </div>
+            <div className="project-grid">
+              {projects.map((project, index) => (
+                <motion.div
+                  className={`project-card project-card-${index + 1}`}
+                  key={project.name}
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setActiveProject(project)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      setActiveProject(project);
+                    }
+                  }}
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+                >
+                  <div className="project-card-top">
+                    <span>{project.index}</span>
+                    <span>{project.metric}</span>
+                  </div>
+                  <div className="project-card-body">
+                    <p className="project-type">{project.type}</p>
+                    <h3>{project.name}</h3>
+                    <p>{project.summary}</p>
 
-        {/* ─ Contact ───────────────────────────────────────────── */}
-        <section className="contact-section page-section" id="contact">
-          <div className="contact-top">
-            <p className="section-kicker">07 / Contact</p>
-            <span className="contact-mark">Let's make the next system clearer.</span>
-          </div>
-          <div className="contact-main">
-            <h2>Have a hard problem<br /><em>worth building?</em></h2>
-            <a className="button button-copper" href="mailto:mustafatariq2304@gmail.com">
-              Start a conversation <ArrowUpRight size={16} />
+                    {/* Direct In-Portfolio Video Embed */}
+                    {project.loomEmbedUrl && (
+                      <div
+                        className="project-card-video"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <div style={{ position: "relative", paddingBottom: "62.5%", height: 0 }}>
+                          <iframe
+                            src={project.loomEmbedUrl}
+                            title={`${project.name} Walkthrough`}
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            style={{
+                              position: "absolute",
+                              top: 0,
+                              left: 0,
+                              width: "100%",
+                              height: "100%",
+                              border: 0,
+                            }}
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <div className="project-card-bottom">
+                    <span>{project.stack}</span>
+                    <div className="flex items-center gap-2.5">
+                      {project.loomUrl && (
+                        <a
+                          href={project.loomUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="card-loom-btn"
+                          title="Watch Loom walkthrough demo"
+                        >
+                          <span className="loom-dot" />
+                          <span>Loom Demo</span>
+                          <ArrowUpRight size={12} />
+                        </a>
+                      )}
+                      <span className="card-open-arrow">
+                        <ArrowUpRight size={16} />
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          {/* ─ Education ─────────────────────────────────────────── */}
+          <section className="education-section page-section" id="education">
+            <div className="education-index">
+              <span>06</span>
+              <Minus size={16} />
+            </div>
+            <div className="education-main">
+              <p className="section-kicker">06 / Education</p>
+              <h2>BS Software Engineering</h2>
+              <p className="education-school">COMSATS University Islamabad · Lahore Campus</p>
+            </div>
+            <div className="education-meta">
+              <span>2022—26</span>
+              <span>OOP · DSA · Databases<br />Architecture · AI · ML</span>
+            </div>
+          </section>
+
+          {/* ─ Contact ───────────────────────────────────────────── */}
+          <section className="contact-section page-section" id="contact">
+            <div className="contact-top">
+              <p className="section-kicker">07 / Contact</p>
+              <span className="contact-mark">Let's make the next system clearer.</span>
+            </div>
+            <div className="contact-main">
+              <h2>Have a hard problem<br /><em>worth building?</em></h2>
+              <a className="button button-copper" href="mailto:mustafatariq2304@gmail.com">
+                Start a conversation <ArrowUpRight size={16} />
+              </a>
+            </div>
+            <div className="contact-bottom">
+              <div className="contact-details">
+                <a href="mailto:mustafatariq2304@gmail.com">
+                  <Mail size={15} /> mustafatariq2304@gmail.com
+                </a>
+                <a href="tel:+923101414978">
+                  <Phone size={15} /> +92 310 1414978
+                </a>
+                <span>
+                  <MapPin size={15} /> Lahore, Pakistan
+                </span>
+              </div>
+              <div className="social-links">
+                <a href="mailto:mustafatariq2304@gmail.com" aria-label="Email Mustafa">
+                  <Mail size={16} />
+                </a>
+                <a
+                  href="https://github.com/mustafatariq2304"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="GitHub"
+                >
+                  <Github size={16} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/mustafatariq2304"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin size={16} />
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <footer className="site-footer">
+            <span>Mustafa Tariq / Software Engineer</span>
+            <span>Signal / Afterimage · {year}</span>
+            <a href="#profile">
+              Back to top <ChevronUp size={14} />
             </a>
-          </div>
-          <div className="contact-bottom">
-            <div className="contact-details">
-              <a href="mailto:mustafatariq2304@gmail.com">
-                <Mail size={15} /> mustafatariq2304@gmail.com
-              </a>
-              <a href="tel:+923101414978">
-                <Phone size={15} /> +92 310 1414978
-              </a>
-              <span>
-                <MapPin size={15} /> Lahore, Pakistan
-              </span>
-            </div>
-            <div className="social-links">
-              <a href="mailto:mustafatariq2304@gmail.com" aria-label="Email Mustafa">
-                <Mail size={16} />
-              </a>
-              <a
-                href="https://github.com/mustafatariq2304"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
-              >
-                <Github size={16} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/mustafatariq2304"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={16} />
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <footer className="site-footer">
-          <span>Mustafa Tariq / Software Engineer</span>
-          <span>Signal / Afterimage · {year}</span>
-          <a href="#profile">
-            Back to top <ChevronUp size={14} />
-          </a>
-        </footer>
-      </main>
+          </footer>
+        </main>
       </div>
 
       {/* ── Project Modal ──────────────────────────────────────── */}
@@ -634,7 +696,7 @@ export default function Home() {
               </div>
 
               {/* Loom Walkthrough Video Embed */}
-              {activeProject.loomUrl && (
+              {(activeProject.loomEmbedUrl || activeProject.loomUrl) && (
                 <div className="modal-loom-section">
                   <div className="modal-loom-header">
                     <div className="flex items-center gap-2">
@@ -643,20 +705,22 @@ export default function Home() {
                         Loom Walkthrough Demo
                       </span>
                     </div>
-                    <a
-                      href={activeProject.loomUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="modal-loom-btn"
-                    >
-                      <Play size={11} className="fill-current" />
-                      <span>Open in Loom</span>
-                      <ArrowUpRight size={11} />
-                    </a>
+                    {activeProject.loomUrl && (
+                      <a
+                        href={activeProject.loomUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="modal-loom-btn"
+                      >
+                        <Play size={11} className="fill-current" />
+                        <span>Open in Loom</span>
+                        <ArrowUpRight size={11} />
+                      </a>
+                    )}
                   </div>
                   <div className="modal-video-frame">
                     <iframe
-                      src={getLoomEmbedUrl(activeProject.loomUrl)}
+                      src={activeProject.loomEmbedUrl || getLoomEmbedUrl(activeProject.loomUrl)}
                       title={`${activeProject.name} Loom Video Walkthrough`}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
