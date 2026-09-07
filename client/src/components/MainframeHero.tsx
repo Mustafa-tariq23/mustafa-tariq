@@ -86,10 +86,15 @@ export default function MainframeHero({ sidebarOpen = false }: MainframeHeroProp
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="text-[19px] sm:text-[22px] lg:text-[26px] tracking-tight font-normal cursor-pointer transition-opacity hover:opacity-80"
+            className="flex items-center gap-2.5 sm:gap-3 text-[19px] sm:text-[22px] lg:text-[26px] tracking-tight font-normal cursor-pointer transition-opacity hover:opacity-85"
             style={{ fontFamily: "var(--font-heading)", color: "#f0ede5" }}
           >
-            Mustafa Tariq®
+            <img
+              src="/logo.png"
+              alt="Mustafa Tariq Logo"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg object-contain border border-white/10 shadow-[0_0_12px_rgba(255,177,107,0.25)] shrink-0"
+            />
+            <span>Mustafa Tariq®</span>
           </a>
           <span
             className="text-[20px] sm:text-[24px] lg:text-[28px] select-none leading-none cursor-default"
@@ -205,6 +210,16 @@ export default function MainframeHero({ sidebarOpen = false }: MainframeHeroProp
             : "opacity-0 pointer-events-none"
         }`}
       >
+        <div className="flex items-center gap-3 pb-2 border-b border-black/10 w-full mb-1">
+          <img
+            src="/logo.png"
+            alt="Mustafa Tariq Logo"
+            className="w-8 h-8 rounded-lg object-contain border border-black/10 shadow-sm"
+          />
+          <span className="font-mono text-xs uppercase tracking-wider text-black/70">
+            Mustafa Tariq / Index
+          </span>
+        </div>
         <a
           href="#profile"
           onClick={(e) => {

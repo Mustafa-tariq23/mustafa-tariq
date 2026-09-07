@@ -475,7 +475,7 @@ export default function Home() {
                           className="card-video-btn"
                           title="Watch Loom video walkthrough in modal"
                         >
-                          <Play size={10} className="fill-current" />
+                          <Play size={10} color="#0a0c0f" className="fill-current" />
                           <span>Watch Demo</span>
                         </button>
                       )}

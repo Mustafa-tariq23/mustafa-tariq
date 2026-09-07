@@ -78,13 +78,30 @@ export default function ProjectDetail() {
     <div className="min-h-screen bg-[#0a0c0f] text-[#f0ede5] selection:bg-[#ffb16b] selection:text-[#0a0c0f]">
       {/* ── Top Navigation Bar ────────────────────────────────────── */}
       <header className="fixed top-0 left-0 right-0 z-40 bg-[#0a0c0f]/85 backdrop-blur-xl border-b border-[#f0ede5]/10 px-5 sm:px-10 py-4 flex items-center justify-between">
-        <Link
-          href="/#work"
-          className="group inline-flex items-center gap-2 text-xs sm:text-sm font-mono tracking-wider text-[#f0ede5]/75 hover:text-[#ffb16b] transition-colors"
-        >
-          <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-          <span>PORTFOLIO / SELECTED WORK</span>
-        </Link>
+        <div className="flex items-center gap-3.5 sm:gap-4">
+          <Link
+            href="/#profile"
+            className="flex items-center gap-2 group shrink-0"
+            title="Mustafa Tariq, Home"
+          >
+            <img
+              src="/logo.png"
+              alt="Mustafa Tariq Logo"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg object-contain border border-white/15 shadow-[0_0_12px_rgba(255,177,107,0.25)] transition-transform group-hover:scale-105"
+            />
+            <span className="hidden sm:inline-block font-sans font-medium text-sm text-[#f0ede5] tracking-tight">
+              Mustafa Tariq
+            </span>
+          </Link>
+          <span className="text-white/20">/</span>
+          <Link
+            href="/#work"
+            className="group inline-flex items-center gap-2 text-xs sm:text-sm font-mono tracking-wider text-[#f0ede5]/75 hover:text-[#ffb16b] transition-colors"
+          >
+            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+            <span>SELECTED WORK</span>
+          </Link>
+        </div>
 
         <div className="flex items-center gap-3 sm:gap-4">
           <button
@@ -398,7 +415,12 @@ export default function ProjectDetail() {
       </main>
 
       {/* ── Minimalist Dossier Footer ─────────────────────────────── */}
-      <footer className="border-t border-white/10 py-8 px-6 text-center text-xs font-mono text-[#7a8ea0]">
+      <footer className="border-t border-white/10 py-8 px-6 text-center text-xs font-mono text-[#7a8ea0] flex items-center justify-center gap-2.5">
+        <img
+          src="/logo.png"
+          alt="Mustafa Tariq Logo"
+          className="w-5 h-5 rounded-md object-contain border border-white/10 shadow-[0_0_8px_rgba(255,177,107,0.2)] shrink-0"
+        />
         <span>Mustafa Tariq / Software Engineer · Signal / Afterimage</span>
       </footer>
     </div>
