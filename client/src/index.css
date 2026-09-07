@@ -239,24 +239,26 @@ h1, h2, h3, p { margin-top: 0; }
 
 .rail-mark { display: flex; align-items: center; gap: 13px; }
 .mark-box {
-  width: 32px; height: 32px;
+  width: 34px; height: 34px;
   display: grid; place-items: center;
-  border: 1px solid rgba(255,177,107,.28);
+  border: 1px solid rgba(255,177,107,.25);
   border-radius: 8px;
   overflow: hidden;
   background: #0a0c0f;
-  box-shadow: 0 0 10px rgba(255,177,107,.15);
+  box-shadow: 0 0 12px rgba(255,177,107,.15);
   transition: all .2s ease;
+  flex-shrink: 0;
 }
 .mark-box:hover {
-  border-color: rgba(255,177,107,.55);
+  border-color: rgba(255,177,107,.6);
   box-shadow: 0 0 16px rgba(255,177,107,.35);
   transform: translateY(-1px);
 }
 .mark-box img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  transform: scale(1.35);
   display: block;
 }
 .rail-name { font: 600 15px/1 "IBM Plex Sans", sans-serif; letter-spacing: -.04em; }
@@ -1244,8 +1246,8 @@ h1 em { color: var(--signal); font-style: normal; }
     display: none !important;
   }
   .mobile-header .mark-lockup { display: flex; align-items: center; gap: 10px; }
-  .mobile-header .mark-box { width: 28px; height: 28px; border-radius: 7px; }
-  .mobile-header .mark-box img { width: 100%; height: 100%; object-fit: contain; }
+  .mobile-header .mark-box { width: 28px; height: 28px; border-radius: 7px; flex-shrink: 0; }
+  .mobile-header .mark-box img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.35); }
   .mark-word { font: 10px "IBM Plex Mono", monospace; letter-spacing: .08em; }
   .mobile-menu-trigger {
     display: grid; place-items: center;

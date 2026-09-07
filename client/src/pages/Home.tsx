@@ -195,7 +195,7 @@ export default function Home() {
         <header className={`mobile-header ${scrolledPastHero ? "visible" : "hidden-hero"}`}>
           <a className="mark-lockup" href="#profile" aria-label="Mustafa Tariq, home">
             <span className="mark-box">
-              <img src="/manus-storage/mt-monogram_1331e70c.png" alt="" />
+              <img src="/logo.png" alt="Mustafa Tariq Logo" />
             </span>
             <span className="mark-word">MUSTAFA TARIQ</span>
           </a>
@@ -227,7 +227,7 @@ export default function Home() {
           <div className="rail-top">
             <a className="rail-mark" href="#profile" aria-label="Mustafa Tariq, home">
               <span className="mark-box">
-                <img src="/manus-storage/mt-monogram_1331e70c.png" alt="" />
+                <img src="/logo.png" alt="Mustafa Tariq Logo" />
               </span>
               <span className="rail-name">Mustafa<br />Tariq</span>
             </a>
@@ -501,14 +501,36 @@ export default function Home() {
               <span>06</span>
               <Minus size={16} />
             </div>
-            <div className="education-main">
-              <p className="section-kicker">06 / Education</p>
-              <h2>BS Software Engineering</h2>
-              <p className="education-school">COMSATS University Islamabad · Lahore Campus</p>
-            </div>
-            <div className="education-meta">
-              <span>2022—26</span>
-              <span>OOP · DSA · Databases<br />Architecture · AI · ML</span>
+            <div className="flex flex-col gap-10">
+              <div>
+                <p className="section-kicker">06 / Education</p>
+                <div className="education-main">
+                  <h2>BS Software Engineering</h2>
+                  <p className="education-school">COMSATS University Islamabad · Lahore Campus</p>
+                </div>
+                <div className="education-meta">
+                  <span>2022—26</span>
+                  <span>OOP · DSA · Databases<br />Architecture · AI · ML</span>
+                </div>
+              </div>
+              <div>
+                <div className="education-main">
+                  <h2>Intermediate in Computer Science</h2>
+                  <p className="education-school">Punjab College · City Campus · Lahore</p>
+                </div>
+                <div className="education-meta">
+                  <span>2020—22</span>
+                </div>
+              </div>
+              <div>
+                <div className="education-main">
+                  <h2>Matriculation</h2>
+                  <p className="education-school">Govt. Central Model High School · Lower Mall · Lahore</p>
+                </div>
+                <div className="education-meta">
+                  <span>2018—20</span>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -561,7 +583,14 @@ export default function Home() {
           </section>
 
           <footer className="site-footer">
-            <span>Mustafa Tariq / Software Engineer</span>
+            <div className="flex items-center gap-2.5">
+              <img
+                src="/logo.png"
+                alt="Mustafa Tariq Logo"
+                className="w-5 h-5 rounded-md object-contain border border-white/10 shadow-[0_0_8px_rgba(255,177,107,0.2)] shrink-0"
+              />
+              <span>Mustafa Tariq / Software Engineer</span>
+            </div>
             <span>Signal / Afterimage · {year}</span>
             <a href="#profile">
               Back to top <ChevronUp size={14} />
